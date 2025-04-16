@@ -3,6 +3,8 @@ import { Tabs } from "expo-router";
 import { View } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Tabicons from "../../helpers/tabicons";
+import { Text } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const Tablayout = () => {
   return (
@@ -10,7 +12,7 @@ const Tablayout = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "green",
+          backgroundColor: "#DB4444",
           height: 70,
           marginHorizontal: 5,
           borderRadius: 50,
@@ -31,14 +33,21 @@ const Tablayout = () => {
         name="(home)/index"
         options={{
           tabBarIcon: ({ focused }) => {
-            return (
-              <Tabicons
-                Iconname="home"
-                focused={focused}
-                IconColor={"white"}
-                Titlename={"Home"}
-              />
-            );
+            if (focused) {
+              return (
+                <Tabicons>
+                  <AntDesign name="home" size={26} color="#22c55e" />
+                  <Text className="text-green-500 font-extrabold">Home</Text>
+                </Tabicons>
+              );
+            } else {
+              return (
+                <Tabicons>
+                  <AntDesign name="home" size={24} color="white" />
+                  <Text className="text-white">Home</Text>
+                </Tabicons>
+              );
+            }
           },
           tabBarShowLabel: false,
         }}
@@ -47,7 +56,21 @@ const Tablayout = () => {
         name="(signin)/index"
         options={{
           tabBarIcon: ({ focused }) => {
-            return <Tabicons />;
+            if (focused) {
+              return (
+                <Tabicons>
+                  <AntDesign name="login" size={26} color="#22c55e" />
+                  <Text className="text-green-500 font-extrabold">Login</Text>
+                </Tabicons>
+              );
+            } else {
+              return (
+                <Tabicons>
+                  <AntDesign name="login" size={24} color="white" />
+                  <Text className="text-white">Login</Text>
+                </Tabicons>
+              );
+            }
           },
           tabBarShowLabel: false,
         }}
@@ -56,7 +79,29 @@ const Tablayout = () => {
         name="(signup)/index"
         options={{
           tabBarIcon: ({ focused }) => {
-            return <Tabicons />;
+            if (focused) {
+              return (
+                <Tabicons>
+                  <MaterialIcons
+                    name="app-registration"
+                    size={26}
+                    color="#22c55e"
+                  />
+                  <Text className="text-green-500 font-extrabold">Sign Up</Text>
+                </Tabicons>
+              );
+            } else {
+              return (
+                <Tabicons>
+                  <MaterialIcons
+                    name="app-registration"
+                    size={24}
+                    color="white"
+                  />
+                  <Text className="text-white">Sign Up</Text>
+                </Tabicons>
+              );
+            }
           },
           tabBarShowLabel: false,
         }}
